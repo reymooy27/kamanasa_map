@@ -9,7 +9,7 @@ export default function AddDataDisabilities() {
 
   const mutation = trpc.useMutation(['disabilities.add-data-disabilities'])
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = (e: React.SyntheticEvent)=>{
     e.preventDefault()
     
     if(initialData.name !== ''){
@@ -35,7 +35,7 @@ export default function AddDataDisabilities() {
           type="text" 
           placeholder='Nama' 
           value={initialData.name} 
-          onChange={(e)=> setInitialData({...initialData, ...{name: e.target.value}})}/>
+          onChange={(e: React.ChangeEvent<HTMLInputElement>)=> setInitialData({...initialData, ...{name: e.target.value}})}/>
         <button className='bg-red-500 p-1 rounded w-fit h-fit'>Submit</button>
       </form>
     </div>

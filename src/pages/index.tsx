@@ -2,9 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript,MarkerF} from '@react-google-maps/api';
 import Link from 'next/link';
 
+export type Position = {
+  lat: number;
+  lng: number;
+}
+
+export type MarkerType = {
+  id: number;
+  position: Position;
+  name: string;
+  age: number;
+  gender: string;
+  disabilities: string;
+}
+
 const Home = ()=>{
 
-  const API_KEY = 'AIzaSyCk2H7Tdl_48W4XjqS4sgulCkPyRQqcFS4'
   
   const containerStyle = {
   width: '800px',
@@ -35,7 +48,7 @@ const markers = [
   // }
 ];
 
-  const [activeInfoWindow, setActiveInfoWindow] = useState(null)
+  const [activeInfoWindow, setActiveInfoWindow] = useState<MarkerType>()
   const [infoOpen, setInfoOpen] = useState(false)
   const [zoom, setZoom] = useState(13)
   const [zoomChanged, setZoomChanged] = useState(false)
@@ -45,16 +58,16 @@ const markers = [
   })
 
 
-  const handleClickMarker = (marker)=>{
+  const handleClickMarker = (marker: MarkerType)=>{
     setActiveInfoWindow(marker)
     setZoom(16)
     
     setCenterMap(marker.position)
   }
 
-  const handleClickMap = (e)=>{
-    console.log(e)
-  }
+  // const handleClickMap = (e: React.MouseEvent<HTMLElement>)=>{
+  //   console.log(e)
+  // }
 
 
   return(
@@ -62,18 +75,18 @@ const markers = [
 
       <div className='w-[60%] h-screen'>
         <LoadScript
-            googleMapsApiKey={API_KEY}
+            googleMapsApiKey={'AIzaSyCk2H7Tdl_48W4XjqS4sgulCkPyRQqcFS4'}
           >
             <GoogleMap
               mapContainerStyle={containerStyle}
               zoom={zoom}
               center={centerMap}
-              onClick={handleClickMap}
+              // onClick={handleClickMap}
               options={
                 {zoomControl: false, minZoom: 13}
               }
             >
-              {markers.map((marker) => (
+              {markers.map((marker: MarkerType) => (
                 <MarkerF
                   key={marker.id}
                   position={marker.position}

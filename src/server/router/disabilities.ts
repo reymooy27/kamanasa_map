@@ -29,7 +29,7 @@ export const disabilitiesRouter = createRouter()
       } catch (error) {
         throw new TRPCError({
           code: 'BAD_REQUEST',
-          message: error,
+          // message: error,
           cause: error
         })
       }
