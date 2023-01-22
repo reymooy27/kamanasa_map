@@ -29,7 +29,9 @@ export default function AddDataDisabilities() {
 
   return (
     <div className='w-ful h-full'>
-      <form onSubmit={handleSubmit}>
+      <form 
+        onSubmit={handleSubmit} 
+        className='flex flex-col width-[300px] h-full bg-yellow-200 justify-center items-center'>
         <input
           className='border border-red-500 rounded px-2' 
           type="text" 

@@ -14,10 +14,17 @@ datasource db {
 }
 
 model Disabilities {
-    id           Int     @id @default(autoincrement())
+    id           Int       @id @default(autoincrement())
     name         String
     age          Int?
     gender       String?
     disabilities String?
     position     String?
+    nik          Int?
+    birthdate    DateTime?
+    rt           Int?
+    rw           Int?
+    dusun        String?
+    desa         String?
+    kecamatan    String?
 }
